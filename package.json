@@ -1,0 +1,27 @@
+{
+  "name": "captp-stream",
+  "version": "1.0.0",
+  "description": "A simple module for constructing a capTP interface over a stream.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/danfinlay/captp-stream.git"
+  },
+  "keywords": [
+    "captp",
+    "ocap",
+    "agoric"
+  ],
+  "author": "Dan Finlay <dan@danfinlay.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danfinlay/captp-stream/issues"
+  },
+  "homepage": "https://github.com/danfinlay/captp-stream#readme",
+  "dependencies": {
+    "@agoric/captp": "^1.2.3"
+  }
+}
