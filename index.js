@@ -1,5 +1,5 @@
 const capTp = require('@agoric/captp');
-const { makeCapTP } = capTp;
+const { makeCapTP, E } = capTp;
 
 function makeCapTpFromStream (streamId, stream, bootstrap) {
 
@@ -17,7 +17,7 @@ function makeCapTpFromStream (streamId, stream, bootstrap) {
   stream.on('end', (reason) => abort(reason));
   stream.on('error', (reason) => abort(reason));
 
-  return { getBootstrap, abort }
+  return { getBootstrap, abort, E }
 }
 
 module.exports = makeCapTpFromStream;
