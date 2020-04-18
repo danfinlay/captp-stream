@@ -2,7 +2,7 @@ const test = require('tape');
 const makeDuplexPair = require('../src/duplex-socket');
 const makeCapTpFromStream = require('../');
 const harden = require('@agoric/harden');
-const { E } = require('@agoric/eventual-send');
+const { E } = require('@agoric/captp');
 
 test('basic connection', async (t) => {
 
@@ -19,14 +19,17 @@ test('basic connection', async (t) => {
   // Client
   const { getBootstrap } = makeCapTpFromStream('client', clientSide, harden({}));
 
-  try {
-    const result = await E(getBootstrap()).foo('bar')
-    t.equal(result, 'baz', 'method was remotely invoked');
-    t.end();
-  } catch (err) {
-    t.fail(err, 'should not fail');
-    t.end();
-  }
+    const result = E(getBootstrap()).foo('bar');
+    t.ok('then' in result, 'thennable');
+    t.equals(typeof result.then, 'function', 'thennable func');
+    result.then((res) => {
+      t.equal(res, 'baz', 'method was remotely invoked');
+      t.end();
+    })
+    .catch((err) => {
+      t.fail(err);
+      t.end();
+    })
 
 })
 
