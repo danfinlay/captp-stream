@@ -13,7 +13,7 @@ or
 Loosely adapted from the test:
 
 ```javascript
-const makeCapTpFromStream = require('../');
+const makeCapTpFromStream = require('captp-stream');
 const harden = require('@agoric/harden');
 const makeDuplexPair = require('../src/duplex-socket');
 
