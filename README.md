@@ -127,5 +127,5 @@ I like this solution fine, I think it has a similar quality to the [optional cha
 
 Oddly enough, Wavy Dot was having trouble getting traction last I was at TC-39, I think partly because most of the members of the panel have not tried programming in this way before. Most devs today see GraphQL as the pinnacle of API services, and I don't think are so used to mixing additional remotely-defined interfaces in ther API results. That's too bad, because this pattern most resembles the normal object/parameter passing that allows JavaScript to enable the [ocap-security](https://en.wikipedia.org/wiki/Object-capability_model) of [Secure EcmaScript](https://github.com/tc39/proposal-ses).
 
-Naturally, Agoric has authored an [Acorn transform](https://github.com/Agoric/agoric-sdk/tree/master/packages/acorn-eventual-send) to insert wavy-dot support into build systems, although it isn't documented to a point where I've felt comfortable using it yet.
+Naturally, Agoric has authored a [Babel transform](https://github.com/Agoric/agoric-sdk/blob/master/packages/transform-eventual-send/package.json) and an [Acorn transform](https://github.com/Agoric/agoric-sdk/tree/master/packages/acorn-eventual-send) to insert wavy-dot support into build systems, although they still aren't documented to a point where I've felt comfortable using it yet.
 
