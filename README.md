@@ -10,34 +10,7 @@ or
 
 ## Usage
 
-Loosely adapted from the test:
-
-```javascript
-const makeCapTpFromStream = require('captp-stream');
-const harden = require('@agoric/harden');
-const makeDuplexPair = require('../src/duplex-socket');
-
-// Assume two duplex streams connected to each other:
-const { clientSide, serverSide } = makeDuplexPair();
-
-// Server
-// A bootstrap should be an object with only functions on it.
-const serverApi = harden({
-  foo: async (arg) => { if (arg === 'bar') { return harden('baz') } },
-});
-makeCapTpFromStream('server', serverSide, serverApi);
-
-// Client
-const { getBootstrap, E } = makeCapTpFromStream('client', clientSide, harden({}));
-
-// Closure to get an async function:
-(async () => {
-
-  const result = await E(getBootstrap()).foo('bar');
-  // result === 'baz'
-
-})()
-```
+See tests.
 
 ## CapTP Syntax
 

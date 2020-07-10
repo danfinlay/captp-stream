@@ -2,6 +2,7 @@ const test = require('tape');
 const makeDuplexPair = require('../src/duplex-socket');
 const makeCapTpFromStream = require('../');
 const harden = require('@agoric/harden');
+const pumpify = require('pumpify');
 
 test('basic connection', async (t) => {
 
@@ -13,10 +14,12 @@ test('basic connection', async (t) => {
   const serverApi = harden({
     foo: async (arg) => { if (arg === 'bar') { return harden('baz') } },
   });
-  makeCapTpFromStream('server', serverSide, serverApi);
+  const { captpStream: serverStream }= makeCapTpFromStream('server', serverApi);
+  pumpify(serverStream, serverSide, serverStream);
 
   // Client
-  const { getBootstrap, E } = makeCapTpFromStream('client', clientSide, harden({}));
+  const { getBootstrap, E, captpStream: clientStream } = makeCapTpFromStream('client', harden({}));
+  pumpify(clientStream, clientSide, clientStream);
 
   try {
     const result = await E(getBootstrap()).foo('bar');
@@ -27,5 +30,5 @@ test('basic connection', async (t) => {
     t.end();
   }
 
-})
+});
 

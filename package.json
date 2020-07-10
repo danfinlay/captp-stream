@@ -1,6 +1,6 @@
 {
   "name": "captp-stream",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "A simple module for constructing a capTP interface over a stream.",
   "main": "index.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "@agoric/harden": "^0.0.7",
     "minipass": "^3.1.1",
     "obj-multiplex": "^1.0.0",
+    "pumpify": "^2.0.1",
     "tape": "^4.13.2"
   }
 }

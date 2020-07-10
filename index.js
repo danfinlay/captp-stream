@@ -1,24 +1,49 @@
 const capTp = require('@agoric/captp');
 const { makeCapTP, E } = capTp;
+const { Duplex } = require('stream');
 
-function makeCapTpFromStream (streamId, stream, bootstrap) {
+function makeCapTpFromStream (streamId, bootstrap) {
+  let dispatch, getBootstrap, abort;
+
+  const stream = new Duplex();
+
+  stream._read = noop;
 
   const send = (obj) => {
-    stream.write(obj);
+    stream.push(JSON.stringify(obj));
   };
 
-  const { dispatch, getBootstrap, abort } = makeCapTP(streamId, send, bootstrap);
+  const capTp = makeCapTP(streamId, send, bootstrap);
+  ({ dispatch, getBootstrap, abort } = capTp);
 
-  stream.on('data', (obj) => {
-    dispatch(obj)
-  });
+  stream._write = (obj, enc, cb) => {
+    try {
+      dispatch(JSON.parse(obj));
+    } catch (err) {
+      return cb(err);
+    }
+    cb();    
+  };
 
-  stream.on('close', (reason) => abort(reason));
-  stream.on('end', (reason) => abort(reason));
-  stream.on('error', (reason) => abort(reason));
+  stream._writev = (chunks, cb) => {
+    try {
+      chunks.forEach((obj) => {
+        dispatch(JSON.parse(obj));
+      });
+    } catch (err) {
+      return cb(err);
+    }
+    cb();
+  }
 
-  return { getBootstrap, abort, E }
-}
+  stream._final = (cb) => {
+    abort();
+    cb();
+  }
+
+  return { getBootstrap, abort, E, captpStream: stream }
+};
 
 module.exports = makeCapTpFromStream;
 
+function noop () {}
