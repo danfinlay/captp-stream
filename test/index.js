@@ -1,9 +1,7 @@
 import test from 'tape';
-import 'ses';
 import assert from 'assert';
-lockdown();
-import makeDuplexPair from '../src/duplex-socket.js';
 import makeCapTpFromStream from '../index.js';
+import makeDuplexPair from '../src/duplex-socket.js';
 import pumpify from 'pumpify';
 
 test('basic connection', async (t) => {
