@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node test"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/danfinlay/captp-stream.git"
@@ -22,14 +23,14 @@
   },
   "homepage": "https://github.com/danfinlay/captp-stream#readme",
   "dependencies": {
-    "@agoric/captp": "^1.2.3"
+    "@agoric/captp": "^1.10.6"
   },
   "devDependencies": {
     "@agoric/eventual-send": "^0.8.0",
-    "@agoric/harden": "^0.0.7",
     "minipass": "^3.1.1",
     "obj-multiplex": "^1.0.0",
     "pumpify": "^2.0.1",
+    "ses": "^0.15.0",
     "tape": "^4.13.2"
   }
 }

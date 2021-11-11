@@ -1,8 +1,10 @@
-const test = require('tape');
-const makeDuplexPair = require('../src/duplex-socket');
-const makeCapTpFromStream = require('../');
-const harden = require('@agoric/harden');
-const pumpify = require('pumpify');
+import test from 'tape';
+import 'ses';
+import assert from 'assert';
+lockdown();
+import makeDuplexPair from '../src/duplex-socket.js';
+import makeCapTpFromStream from '../index.js';
+import pumpify from 'pumpify';
 
 test('basic connection', async (t) => {
 
