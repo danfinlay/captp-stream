@@ -1,7 +1,7 @@
 // From: https://stackoverflow.com/a/55136548/272576
 // Modified to our eslint and to support object-mode.
-const Duplex = require('stream').Duplex
-const assert = require('assert')
+import { Duplex } from 'stream';
+import assert from 'assert';
 
 // Define some unique property names.
 // The actual value doesn't matter,
@@ -67,4 +67,4 @@ function makeDuplexPair () {
   return { clientSide, serverSide }
 }
 
-module.exports = makeDuplexPair
+export default makeDuplexPair;

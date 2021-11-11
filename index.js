@@ -1,8 +1,8 @@
-const capTp = require('@agoric/captp');
-const { makeCapTP, E } = capTp;
-const { Duplex } = require('stream');
+import './src/lockdown.js';
+import { makeCapTP, E } from '@agoric/captp';
+import { Duplex } from 'stream';
 
-function makeCapTpFromStream (streamId, bootstrap) {
+export default function makeCapTpFromStream (streamId, bootstrap) {
   let dispatch, getBootstrap, abort;
 
   const stream = new Duplex();
@@ -22,7 +22,7 @@ function makeCapTpFromStream (streamId, bootstrap) {
     } catch (err) {
       return cb(err);
     }
-    cb();    
+    cb();
   };
 
   stream._writev = (chunks, cb) => {
@@ -43,7 +43,5 @@ function makeCapTpFromStream (streamId, bootstrap) {
 
   return { getBootstrap, abort, E, captpStream: stream }
 };
-
-module.exports = makeCapTpFromStream;
 
 function noop () {}
