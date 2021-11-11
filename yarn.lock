@@ -25,25 +25,6 @@
   resolved "https://registry.yarnpkg.com/@agoric/eventual-send/-/eventual-send-0.13.30.tgz#5addee2d18c165f477b89b7b4f44e48a4da29d17"
   integrity sha512-jwn4o161Jm/TWcPg0pE3UtJ2y1/0FEFmDVivDJIqI+K5freXXwr0OT2TOIctQGdsvNASPtRZLrdVUk9diYLbYQ==
 
-"@agoric/eventual-send@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@agoric/eventual-send/-/eventual-send-0.8.0.tgz#97d1c964fcb2f8adda3918b7ad7a2c8fb16c1764"
-  integrity sha512-lDxqz0O6odnhd6SDfYEZCyZu08yhf5SDVNAs3/HwCm+g3Ioob20o5zf8HIu0PrFH0MxpruISPxj7AfjphNaBZA==
-  dependencies:
-    "@agoric/harden" "^0.0.4"
-
-"@agoric/harden@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@agoric/harden/-/harden-0.0.4.tgz#b0d0b2fdfc1a8c7e60454374824442f5b37ea8bd"
-  integrity sha512-WvTw2otvchy3mScAvqQcX0l6049xp6cF17/Pw0PNNqUTJtOo/84tE9OyBSjEp8wn/XBNArPaJuRjMhQpIQ775Q==
-  dependencies:
-    "@agoric/make-hardener" "0.0.4"
-
-"@agoric/make-hardener@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@agoric/make-hardener/-/make-hardener-0.0.4.tgz#9b5d6692bc2fbbac2fff0a6682959ac5e69c582d"
-  integrity sha512-0k/wGkIVQO3IY7p/H/5OS3BIXsRK9Qb7nHnqyvj6hzvSyumwgPp8e4rz5QaVWSen43TGJl+zQn4mW9ZZShT1aw==
-
 "@agoric/marshal@^0.4.28":
   version "0.4.28"
   resolved "https://registry.yarnpkg.com/@agoric/marshal/-/marshal-0.4.28.tgz#cbbf9ebb41dcb382407af7a44d3f6eebc2d46726"

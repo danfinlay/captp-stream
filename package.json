@@ -26,7 +26,7 @@
     "@agoric/captp": "^1.10.6"
   },
   "devDependencies": {
-    "@agoric/eventual-send": "^0.8.0",
+    "@agoric/eventual-send": "^0.13.30",
     "minipass": "^3.1.1",
     "obj-multiplex": "^1.0.0",
     "pumpify": "^2.0.1",
