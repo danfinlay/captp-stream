@@ -1,4 +1,3 @@
-import './src/lockdown.js';
 import { makeCapTP, E } from '@agoric/captp';
 import { Duplex } from 'stream';
 

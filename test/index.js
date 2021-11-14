@@ -1,3 +1,4 @@
+import '../src/lockdown.js';
 import test from 'tape';
 import assert from 'assert';
 import makeCapTpFromStream from '../index.js';

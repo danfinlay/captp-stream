@@ -10,6 +10,8 @@ or
 
 ## Usage
 
+You'll need to run your own lockdown script to set up the shimmed environment for this to work. Check `src/lockdown.js` as an example.
+
 See tests.
 
 ## CapTP Syntax
