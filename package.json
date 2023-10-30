@@ -1,6 +1,6 @@
 {
   "name": "captp-stream",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "A simple module for constructing a capTP interface over a stream.",
   "main": "index.js",
   "scripts": {
@@ -23,10 +23,12 @@
   },
   "homepage": "https://github.com/danfinlay/captp-stream#readme",
   "dependencies": {
-    "@agoric/captp": "^1.10.6"
+    "@agoric/captp": "^1.10.6",
+    "@endo/captp": "^3.1.5"
   },
   "devDependencies": {
     "@agoric/eventual-send": "^0.13.30",
+    "@endo/far": "^0.2.22",
     "minipass": "^3.1.1",
     "obj-multiplex": "^1.0.0",
     "pumpify": "^2.0.1",

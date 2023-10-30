@@ -1,6 +1,7 @@
 import '../src/lockdown.js';
 import test from 'tape';
 import assert from 'assert';
+import { E, Far, getInterfaceOf, passStyleOf } from '@endo/far';
 import makeCapTpFromStream from '../index.js';
 import makeDuplexPair from '../src/duplex-socket.js';
 import pumpify from 'pumpify';
@@ -12,10 +13,11 @@ test('basic connection', async (t) => {
 
   // Server
   // A bootstrap should be an object with only functions on it.
-  const serverApi = harden({
-    foo: async (arg) => { if (arg === 'bar') { return harden('baz') } },
+  async function foo (arg) { if (arg === 'bar') { return harden('baz') } }
+  const serverApi = Far('background-api', {
+    foo,
   });
-  const { captpStream: serverStream }= makeCapTpFromStream('server', serverApi);
+  const { captpStream: serverStream } = makeCapTpFromStream('server', serverApi);
   pumpify(serverStream, serverSide, serverStream);
 
   // Client

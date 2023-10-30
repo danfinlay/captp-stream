@@ -1,10 +1,11 @@
-import { makeCapTP, E } from '@agoric/captp';
 import { Duplex } from 'stream';
+import { makeCapTP, E } from '@endo/captp';
+global.E = E;
 
-export default function makeCapTpFromStream (streamId, bootstrap) {
-  let dispatch, getBootstrap, abort;
-
-  const stream = new Duplex();
+export default function makeCapTpFromStream(streamId, bootstrap) {
+  const stream = new Duplex({
+    objectMode: true,
+  });
 
   stream._read = noop;
 
@@ -13,15 +14,15 @@ export default function makeCapTpFromStream (streamId, bootstrap) {
   };
 
   const capTp = makeCapTP(streamId, send, bootstrap);
-  ({ dispatch, getBootstrap, abort } = capTp);
+  const { dispatch, getBootstrap, abort } = capTp;
 
-  stream._write = (obj, enc, cb) => {
+  stream._write = (obj, _enc, cb) => {
     try {
       dispatch(JSON.parse(obj));
     } catch (err) {
       return cb(err);
     }
-    cb();
+    return cb();
   };
 
   stream._writev = (chunks, cb) => {
@@ -32,15 +33,17 @@ export default function makeCapTpFromStream (streamId, bootstrap) {
     } catch (err) {
       return cb(err);
     }
-    cb();
-  }
+    return cb();
+  };
 
   stream._final = (cb) => {
     abort();
     cb();
-  }
+  };
 
-  return { getBootstrap, abort, E, captpStream: stream }
-};
+  return { getBootstrap, abort, E, captpStream: stream };
+}
 
-function noop () {}
+function noop() {
+  // noop
+}
